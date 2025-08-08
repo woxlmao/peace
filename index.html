@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Peace / Sad Playlist 🎧</title>
   <style>
     * {
@@ -13,7 +13,7 @@
     }
 
     body {
-      background: radial-gradient(circle at top left, #0f0f0f, #000000);
+      background: radial-gradient(circle at center, #0a0a0a, #000000);
       color: #ffffff;
       height: 100vh;
       overflow: hidden;
@@ -21,101 +21,149 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+      perspective: 1000px;
     }
 
     h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #ffffff, #8888ff);
+      font-size: 4.5rem;
+      background: linear-gradient(90deg, #ffffff, #8888ff, #ffffff);
+      background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: fadeInDown 2s ease-out;
+      animation: gradientMove 6s infinite linear, fadeInDown 2s ease-out, floatText 6s ease-in-out infinite;
+      text-align: center;
+      text-shadow: 0 0 15px #8888ff88;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     .player {
-      margin-top: 40px;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 16px;
-      box-shadow: 0 0 25px #8888ff55;
-      animation: fadeInUp 2.5s ease-in;
+      margin-top: 50px;
+      width: 95%;
+      max-width: 750px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 35px #8888ff88;
+      transform: rotateX(15deg);
+      animation: fadeInUp 2.5s ease-in, floatBox 8s ease-in-out infinite;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .bg-glow {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, #8888ff11 0%, transparent 70%);
-      animation: floatGlow 12s infinite ease-in-out;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    @keyframes floatGlow {
-      0% {
-        transform: translate(-10%, -10%);
-      }
-      50% {
-        transform: translate(10%, 10%);
-      }
-      100% {
-        transform: translate(-10%, -10%);
-      }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
     }
 
     footer {
       position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: #666;
-      opacity: 0.6;
-      animation: fadeInUp 4s ease-in;
+      bottom: 25px;
+      font-size: 1rem;
+      color: #aaa;
+      animation: fadeInUp 3s ease-in;
+      text-shadow: 0 0 5px #8888ff66;
     }
 
     a {
-      color: #8888ff;
+      color: #aaaaff;
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
+      color: #ffffff;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatBox {
+      0%, 100% { transform: rotateX(15deg) translateY(0); }
+      50% { transform: rotateX(15deg) translateY(-10px); }
+    }
+
+    .bg-stars {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      opacity: 0.5;
+      animation: twinkle 3s infinite ease-in-out, moveStars 20s linear infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.8; }
+    }
+
+    @keyframes moveStars {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(100vh); }
+    }
+
+    .custom-audio {
+      display: none;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      filter: drop-shadow(0 0 6px #8888ffaa);
     }
   </style>
 </head>
 <body>
-  <div class="bg-glow"></div>
+  <div class="bg-stars"></div>
+
   <h1>🌙 Peace / Sad Vibes</h1>
+
   <div class="player">
     <iframe style="border-radius:12px"
       src="https://open.spotify.com/embed/playlist/6CyCpZmIsVB4XkTKDT32du?utm_source=generator"
-      width="100%" height="352" frameborder="0" allowfullscreen=""
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy">
     </iframe>
   </div>
+
   <footer>
-    <a href="https://open.spotify.com/playlist/6CyCpZmIsVB4XkTKDT32du" target="_blank">Open in Spotify</a>
+    <a href="https://open.spotify.com/playlist/6CyCpZmIsVB4XkTKDT32du" target="_blank">🎧 Open in Spotify</a>
   </footer>
+
+  <script>
+    const starContainer = document.querySelector('.bg-stars');
+    for (let i = 0; i < 180; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's';
+      star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+      starContainer.appendChild(star);
+    }
+  </script>
 </body>
 </html>
