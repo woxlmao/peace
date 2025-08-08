@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peace / Sad Playlist 🎧</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #0f0f0f, #000000);
+      color: #ffffff;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #ffffff, #8888ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 2s ease-out;
+    }
+
+    .player {
+      margin-top: 40px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px #8888ff55;
+      animation: fadeInUp 2.5s ease-in;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, #8888ff11 0%, transparent 70%);
+      animation: floatGlow 12s infinite ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes floatGlow {
+      0% {
+        transform: translate(-10%, -10%);
+      }
+      50% {
+        transform: translate(10%, 10%);
+      }
+      100% {
+        transform: translate(-10%, -10%);
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      opacity: 0.6;
+      animation: fadeInUp 4s ease-in;
+    }
+
+    a {
+      color: #8888ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <h1>🌙 Peace / Sad Vibes</h1>
+  <div class="player">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/6CyCpZmIsVB4XkTKDT32du?utm_source=generator"
+      width="100%" height="352" frameborder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+  <footer>
+    <a href="https://open.spotify.com/playlist/6CyCpZmIsVB4XkTKDT32du" target="_blank">Open in Spotify</a>
+  </footer>
+</body>
+</html>
